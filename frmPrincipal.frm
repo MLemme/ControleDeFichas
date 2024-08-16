@@ -66,7 +66,7 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Dim Versão As String
+Dim Versï¿½o As String
 Private Sub Form_Load()
     Dim ConectaAcces As String
     Dim ArquivoDB As String
@@ -82,9 +82,9 @@ Private Sub Form_Load()
     
     connect_banco.Open ConectaAccess
     
-    Versão = "1.1.3"
+    Versï¿½o = "1.1.3"
     
-    frmPrincipal.Caption = "Controle de Fichas " & Versão
+    frmPrincipal.Caption = "Controle de Fichas " & Versï¿½o
     
 End Sub
 Private Sub Form_Unload(Cancel As Integer)
@@ -129,9 +129,9 @@ Private Sub mnuImportar_Click()
     Conferir = True
     Final = False
     
-    lblProgresso.Caption = "Analisando cabeçalho da Planilha..."
+    lblProgresso.Caption = "Analisando cabeï¿½alho da Planilha..."
     
-    'Conferir Cabeçalho
+    'Conferir Cabeï¿½alho
     CabA1 = oExcel.Application.Cells(1, 1).Value
     CabB1 = oExcel.Application.Cells(1, 2).Value
     CabC1 = oExcel.Application.Cells(1, 3).Value
@@ -147,7 +147,7 @@ Private Sub mnuImportar_Click()
     If (CabB1 <> "A/c") Then
         Conferir = False
     End If
-    If (CabC1 <> "Endereço") Then
+    If (CabC1 <> "Endereï¿½o") Then
         Conferir = False
     End If
     If (CabD1 <> "Bairro") Then
@@ -167,7 +167,7 @@ Private Sub mnuImportar_Click()
     End If
     
     If (Conferir = False) Then
-        response = MsgBox("Arquivo com formatação inválida", vbCritical, "Erro")
+        response = MsgBox("Arquivo com formataï¿½ï¿½o invï¿½lida", vbCritical, "Erro")
         
         lblProgresso.Visible = False
         Progresso.Visible = False
@@ -246,7 +246,7 @@ Private Sub mnuImportar_Click()
         End If
         
         
-        'Fecha loop e redimensiona caches senão conta próximo item
+        'Fecha loop e redimensiona caches senï¿½o conta prï¿½ximo item
         If (EntradaDados(Cont - 2).Nome = "") Then
             If (oExcel.Application.Cells(Cont + 1, 1).Value = "") Then
                 Final = True
@@ -254,10 +254,10 @@ Private Sub mnuImportar_Click()
                 ReDim Preserve EntradaPedido(UBound(EntradaPedido) - 1)
                 
                 lblProgresso.Caption = "Transferindo cache de dados da Planilha para o Banco de Dados..."
-                FunçõesDoBanco.EsvaziarCaches
+                Funï¿½ï¿½esDoBanco.EsvaziarCaches
                 
             Else
-                response = MsgBox("Tabela de Importação com dados inválidos, existe um espaçamento entre dados da coluna Nome", vbCritical, "Erro")
+                response = MsgBox("Tabela de Importaï¿½ï¿½o com dados invï¿½lidos, existe um espaï¿½amento entre dados da coluna Nome", vbCritical, "Erro")
                 lblProgresso.Visible = False
                 Progresso.Visible = False
                 oExcel.Workbooks.Close
@@ -288,7 +288,7 @@ Private Sub mnuRegistros_Click()
 End Sub
 Private Sub mnuSobre_Click()
     
-    response = MsgBox("Desenvolvido por: " & Chr(13) & "Mauricio Andrade Lemme" & Chr(13) & "Contato: mauricioalemme@yahoo.com.br", vbInformation, "Controle de Fichas " & Versão)
+    response = MsgBox("Desenvolvido por: " & Chr(13) & "Mauricio Andrade Lemme" & Chr(13) & "Contato: mauricio.lemme@gmail.com", vbInformation, "Controle de Fichas " & Versï¿½o)
     
 End Sub
 Private Sub mnuExportar_Click()
@@ -318,12 +318,12 @@ Private Sub mnuExportar_Click()
     oExcel.Workbooks.Add   'inclui o workbook
     Set objExlSht = oExcel.ActiveWorkbook.Sheets(1)
     
-    'Escrever Cabeçalho
+    'Escrever Cabeï¿½alho
     oExcel.Range("A1").FormulaR1C1 = "Nome"
     oExcel.Application.Cells(1, 1).ColumnWidth = 50
     oExcel.Range("B1").FormulaR1C1 = "A/c"
     oExcel.Application.Cells(1, 2).ColumnWidth = 15
-    oExcel.Range("C1").FormulaR1C1 = "Endereço"
+    oExcel.Range("C1").FormulaR1C1 = "Endereï¿½o"
     oExcel.Application.Cells(1, 3).ColumnWidth = 45
     oExcel.Range("D1").FormulaR1C1 = "Bairro"
     oExcel.Application.Cells(1, 4).ColumnWidth = 15
@@ -343,7 +343,7 @@ Private Sub mnuExportar_Click()
         
     Next Negrito
     
-    'Escrever Conteúdo
+    'Escrever Conteï¿½do
     SQLComand = "SELECT * FROM Cliente ORDER BY nome"
     
     Set record = CreateObject("ADODB.Recordset")
@@ -373,7 +373,7 @@ Private Sub mnuExportar_Click()
         oExcel.Range(Celula).FormulaR1C1 = record!Observacoes
         
         If (record!tel2 <> "") Then
-            If (record!tel2 <> "Não Informado") Then
+            If (record!tel2 <> "Nï¿½o Informado") Then
                 Celula = "G" & Right(Str(x), Len(Str(x)) - 1)
                 oExcel.Range(Celula).FormulaR1C1 = record!tel1 & " / " & record!tel2
             Else
@@ -390,7 +390,7 @@ Private Sub mnuExportar_Click()
         
         Set record_pedido = CreateObject("ADODB.Recordset")
         record_pedido.Open SQLComand, connect_banco, adOpenKeyset, adLockOptimistic
-        If record_pedido.RecordCount <> 0 Then 'Correção 14.01.2010
+        If record_pedido.RecordCount <> 0 Then 'Correï¿½ï¿½o 14.01.2010
             record_pedido.MoveFirst
             
             If (record_pedido.RecordCount <> 1) Then
@@ -418,7 +418,7 @@ Private Sub mnuExportar_Click()
             End If
         Else
             Celula = "F" & Right(Str(x), Len(Str(x)) - 1)
-            oExcel.Range(Celula).FormulaR1C1 = "Não há PEDIDOS"
+            oExcel.Range(Celula).FormulaR1C1 = "Nï¿½o hï¿½ PEDIDOS"
         End If
         
         'frmPrincipal.Progresso.Value = Int(((x - 2) * 100) / record.RecordCount)
