@@ -1,0 +1,34 @@
+Versão Beta
+
+1.0.0
+
+- Tabulação de Objetos com tecla Enter
+
+1.1.0
+
+- Comunicação ODBC com Bando de Dados em Access utilizando Microsoft Access Driver (*.mdb)
+- Interface de inserção de Clientes com 3 Nº de Pedidos
+- Interface para listar Clientes já cadastrados
+- Interface para alterar Clientes já cadastrados
+- Comandos para Apagar e Visualisar Clientes
+- Sistema de busca pelo nome do Cliente
+
+1.1.1
+
+- Sistema de Filtro para busca com mais opções
+- Sistema para exportação dos dados existentes no banco em *.xls
+- Sistema de importação de dados de uma planilha *.xls para o banco (seguindo um modelo)
+- Tecla para retornar ao modo de visualização de todos registros
+
+1.1.2
+
+- Opção para inserir pedidos para Cliente já existente
+- Correção de controles de buffer
+- Melhor controle de processos de cache
+- Controle de itens (limitação 32699 para exibição)
+- Controle de redundância de Clientes, não permitida inserção de Nome e Endereço já existente
+
+1.1.3
+
+- Correção na opção de exportação para caso não haja nenhum pedido registrado, informando "Não há PEDIDO" no arquivo .xls
+- Alteração do layout de exibição dos Registros, no lugar da coluna CPF / CNPJ exibir os Pedidos registrados
